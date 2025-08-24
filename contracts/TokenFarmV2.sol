@@ -144,10 +144,8 @@ contract TokenFarmV2 {
    */
   function deposit(uint256 _amount) external whenNotEmergency {
     require(_amount > 0, 'Amount must be greater than 0');
-    require(
-      lpToken.transferFrom(msg.sender, address(this), _amount),
-      'Transfer failed'
-    );
+
+    lpToken.transferFrom(msg.sender, address(this), _amount);
 
     userInfo[msg.sender].stakingBalance += _amount;
     totalStakingBalance += _amount;
@@ -172,26 +170,28 @@ contract TokenFarmV2 {
    * @notice Withdraw all staked LP tokens
    */
   function withdraw() external onlyStaker whenNotEmergency {
-    uint256 balance = userInfo[msg.sender].stakingBalance;
-    require(balance > 0, 'No tokens to withdraw');
+    uint256 staked = userInfo[msg.sender].stakingBalance;
+    require(staked > 0, 'No tokens to withdraw');
 
     uint256 blocksStaked = block.number -
       userInfo[msg.sender].stakingStartBlock;
     uint256 penalty = 0;
+
     if (blocksStaked < stakingLockPeriod) {
-      penalty = (balance * earlyWithdrawalPenalty) / BASIS_POINTS_DENOMINATOR;
-      balance = balance - penalty;
+      penalty = (staked * earlyWithdrawalPenalty) / BASIS_POINTS_DENOMINATOR;
     }
+
+    uint256 payout = staked - penalty;
 
     distributeRewards(msg.sender);
 
     userInfo[msg.sender].stakingBalance = 0;
-    totalStakingBalance -= (balance + penalty);
     userInfo[msg.sender].isStaking = false;
+    totalStakingBalance -= staked;
 
-    require(lpToken.transfer(msg.sender, balance), 'Transfer failed');
+    lpToken.transfer(msg.sender, payout);
 
-    emit Withdraw(msg.sender, balance, penalty, block.timestamp);
+    emit Withdraw(msg.sender, payout, penalty, block.timestamp);
   }
 
   /**

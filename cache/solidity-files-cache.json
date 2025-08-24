@@ -346,8 +346,8 @@
       ]
     },
     "C:\\Users\\asola\\Documents\\GitHub\\simple-defi-yield-farm\\contracts\\TokenFarmV2.sol": {
-      "lastModificationDate": 1756013324296,
-      "contentHash": "ca687ac9ec864fd0d2f862560a3d9d2f",
+      "lastModificationDate": 1756020307274,
+      "contentHash": "080d1c131c433572bce92390ef51367f",
       "sourceName": "contracts/TokenFarmV2.sol",
       "solcConfig": {
         "version": "0.8.22",

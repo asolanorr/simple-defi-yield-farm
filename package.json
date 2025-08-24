@@ -9,9 +9,7 @@
     "test:tokens": "hardhat test test/DappToken.test.js test/LPToken.test.js",
     "test:v1": "hardhat test test/TokenFarm.test.js",
     "test:v2": "hardhat test test/TokenFarmV2.test.js",
-    "deploy": "hardhat run scripts/deploy-unified.js",
-    "deploy:v1": "hardhat run scripts/deploy-unified.js",
-    "deploy:v2": "hardhat run scripts/deploy-v2.js",
+    "deploy": "hardhat run scripts/deploy.js",
     "node": "hardhat node"
   },
   "devDependencies": {
