@@ -1,6 +1,19 @@
 # simple-defi-yield-farm
 ETH - KIPU | Module 5 | FINAL TEST
 
+Contracts:
+
+- TokenFarm: https://sepolia.etherscan.io/address/0x88BB9AB92EaF9A2860c36a236dD4605300186Ede
+
+- TokenFarmV2: https://sepolia.etherscan.io/address/0x4b71C1bA433746EFb3495FbA8D4fe14F5B5BF295
+
+
+Tokens:
+
+- LPToken: https://sepolia.etherscan.io/address/0x309FbaC6DF4505FE381956c65dC94297c41A112b
+
+- DappToken: https://sepolia.etherscan.io/address/0x7CD31E6dd81D868ACB828f987633Db7e68986D11
+
 ---
 
 # Ejercicio Simple DeFi Yield Farming
